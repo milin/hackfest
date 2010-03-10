@@ -1,0 +1,128 @@
+<!--
+   logview.html ~ Browse the log file
+
+   Created: March 4, 2010
+   
+   Contributors:
+       Jon Waltman (jonathan.waltman@gmail.com)
+  -->
+
+<!DOCTYPE html>
+<html>
+<head> 
+<title>Log</title>
+
+
+<style type="text/css">
+
+  body {
+  font-family: "DejaVu Sans Mono", "Courier New", "Courier", monospaced;
+  }
+
+      #red {
+      float: left;
+      width: 50%;
+      background: white;
+      }
+
+      #red .name {
+      color: red;
+      }
+      
+      #blue {
+      float: right;
+      width: 50%;
+      background: white;
+      }
+      
+      #blue .name {
+      color: blue;
+      }
+
+  .red legend {
+      color: red;
+  }
+
+  .blue legend {
+      color: blue;
+  }
+
+</style>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery.template.js"></script>
+
+</head>
+
+<body>
+
+<h1>Hackfest Log</h1>
+
+<form id="filter">
+    <p>
+      <input name="text" />
+      <button type="submit">Filter Logs</button>
+    </p>
+</form>
+
+<div id="red">
+</div>
+
+<div id="blue">
+</div>
+
+<script language="javascript1.5">
+
+var teamLogTemplate = $.template(
+'<div class="${name}">' +
+'  <fieldset>' +
+'    <legend>${name}</legend>' +
+'    Time: ${time}<br />' +
+'    Score: ${score}<br />' +
+'    Services: ${services}' +
+'  </fieldset>' +
+'</div>');
+
+function updateLogs() {
+    $.get("events.log",
+	  function(data) {
+  	      data = '[' + data.split('\n').join(',') + ']';
+              data = $.parseJSON(data);
+              $('#red, #blue').html("");
+	      for (var i in data) {
+                  var team = data[i];
+                  team.services = JSON.stringify(team.services);
+		  var html = teamLogTemplate.apply(team);
+		  $('#' + team.name).prepend(html);
+	      }
+	  });
+    timeout = setTimeout("updateLogs()", 10000);
+}
+
+$(document).ready(
+    function(){
+	updateLogs();
+    });
+
+$("#filter").submit(
+    function() {
+	var re = $(this.text).val();
+	if (re.length == 0) {
+            re = '.';
+	}
+	re = new RegExp(re);
+	$('.team').each(
+	    function() {
+		if ($(this).text().search(re) == -1)
+		    $(this).hide('slow');
+		else
+		    $(this).show('slow');
+	    });
+	return false;
+    });
+
+</script>
+
+</body>
+</html>

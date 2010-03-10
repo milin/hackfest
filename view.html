@@ -1,0 +1,164 @@
+<!--
+   hackview.html ~ Scoring client for hackfest
+
+   Displays the current score for each team.
+   
+   Created: March 4, 2010
+   
+   Contributors:
+       Jon Waltman (jonathan.waltman@gmail.com)
+  -->
+   
+<!DOCTYPE html>
+<html>
+  <head> 
+
+    <style type="text/css">
+      
+      html, body {
+      width: 99%;
+      }
+      
+      h1,h2 { 
+      font-family: "Franklin Gothic Demi", Verdana, Arial, sans-serif;
+      }
+
+      body {
+      background: #eed5b7;
+      }
+
+      .score {
+      font-family: Arial, sans-serif;
+      font-size: 400%;
+      }
+
+      .mono {
+      font-family: "DejaVu Sans Mono", "Courier New", "Courier", monospaced;
+      }
+
+      th, td {
+      border: 1px solid #999;
+      padding: 0.1em 1em;
+      }
+
+      #red {
+      float: left;
+      width: 50%;
+      background: white;
+      }
+
+      #red .name {
+      color: red;
+      }
+      
+      #blue {
+      float: right;
+      width: 50%;
+      background: white;
+      }
+      
+      #blue .name {
+      color: blue;
+      }      
+      
+      #container {    
+      background: #ffe4e1;
+      }
+
+      #log {
+      clear: both;
+      background: #ffc1c1;
+      }
+
+      #footer {
+      clear: both;
+      font: 80% arial, helvetica, sans-serif;
+      /* margin-top: 3em; */
+      background: #ffc1c1;
+      text-align: center;
+      }
+      
+      #sidebar {
+      float: left;
+      width: 134px;
+      color: green;
+      background: #ffefdb;
+      text-align: center;
+      }
+
+    </style>
+
+    <title>Hackfest</title>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.template.js"></script>
+    
+</head>
+
+<body>
+
+
+<h1>
+<!-- <marquee> -->
+<!-- <blink> -->
+Hackfest
+<!-- </blink> -->
+<!-- </marquee> -->
+</h1>
+
+
+<div id="red">
+  <fieldset>
+    <legend class="name"><span class="mono">Red Team</span></legend>
+    <p>score <span class="score">0</span></p>
+    <table class="services">
+    </table>    
+  </fieldset>
+</div>
+
+<div id="blue">
+  <fieldset>
+    <legend class="name"><span class="mono">Blue Team</span></legend>
+    <p>score <span class="score">0</span></p>
+    <table class="services">
+    </table>
+  </fieldset>
+</div>
+
+<div id="footer">
+  <hr />
+  <div id="countdown">
+  </div>
+  <p><a href="logview.html">View Log</a></p>
+</div>
+
+<script>
+
+var sleep = 5000;
+
+function updateScores() {
+    $.getJSON("scores.rpy",
+	      function(data) {
+		  for (var i in data) {
+                      var team = data[i];
+		      $('#' + team.name + ' .score').text(team.score);
+                      var html = '<tr><th colspan="2">Services</th></tr>';
+                      for (var s in team.services) {
+			  html += "<tr><td>" + s + "</td><td>" 
+			      + team.services[s] + "</td></tr>";
+		      }
+                      $('#' + team.name + ' .services').html(html);
+		  }
+	      });
+    timeout = setTimeout("updateScores()", sleep);
+}
+
+$(document).ready(
+    function() {
+	updateScores();        
+    });
+
+</script>
+
+</body>
+</html>
