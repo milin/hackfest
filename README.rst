@@ -1,10 +1,10 @@
 hackfest
 ========
 
-So far, this is a simple prototype of the scoring server/client for the ``hackfest`` 
-competition.
+So far, this is a simple prototype of the scoring server/client for
+the ``hackfest`` competition.
 
-More information can be found at our website, <http://jonwaltman.github.com/hackfest/>.
+Check out the website, <http://jonwaltman.github.com/hackfest/>.
 
 
 Dependencies
@@ -25,3 +25,6 @@ Then to run the program::
   
     cd /path/to/hackfest
     twistd -ny hackfest.tac
+
+This will start the ``twisted`` web server which will serve the 
+program at <http://localhost:8080/>.
