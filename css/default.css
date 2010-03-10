@@ -11,6 +11,8 @@ body { background: #a82052 }
 
 #container {
     padding: 1em 2em;
+    margin: auto;
+    width: 550pt;
 }
 
 #header {
@@ -20,21 +22,18 @@ body { background: #a82052 }
 
 #header h1 {
     display: inline;
-    font-family: "Courier New", monospaced;
+    font-family: "Courier New", monospace;
     font-size: 3em;
 }
 
 #header h2 { 
     display: inline;
     font-size: 2em;
-    font-family: "Courier New", monospaced;
+    font-family: "Courier New", monospace;
 }
 
 #nav a {
     text-decoration: none;
-}
-
-* a:hover {
     font-weight: bold;
 }
 
@@ -50,11 +49,13 @@ body { background: #a82052 }
 #content {
     padding: 0 0.7em;
     margin: 0;
+    font-family: sans-serif;
+    font-size: 0.9em;
 }
 
 #footer {
     padding: 0.2em;
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: black;
 }
 
