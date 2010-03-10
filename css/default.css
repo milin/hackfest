@@ -1,0 +1,65 @@
+
+/* Colors */
+body { background: #a82052 }
+#container { background: #a82052 }
+#wrapper { background: white; }
+#header { background: #282833; }
+#header h1, #header h2 { color: #ebd6ce; }
+#nav { background: #dbcb64; }
+#nav a { color: #282833; }
+#footer a { color: #282833; }
+
+#container {
+    padding: 1em 2em;
+}
+
+#header {
+    padding: 0.5em;
+    margin: 0;
+}
+
+#header h1 {
+    display: inline;
+    font-family: "Courier New", monospaced;
+    font-size: 3em;
+}
+
+#header h2 { 
+    display: inline;
+    font-size: 2em;
+    font-family: "Courier New", monospaced;
+}
+
+#nav a {
+    text-decoration: none;
+}
+
+* a:hover {
+    font-weight: bold;
+}
+
+#nav ul {
+    margin: 0;
+}
+
+#nav li {
+    display: inline;
+    margin: 0.5em;
+}
+
+#content {
+    padding: 0 0.7em;
+    margin: 0;
+}
+
+#footer {
+    padding: 0.2em;
+    font-size: 0.9em;
+    color: black;
+}
+
+#footer a {
+    color: black;
+    text-decoration: none;
+}
+
