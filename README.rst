@@ -1,8 +1,7 @@
-
 hackfest
 ========
 
-So far, this is a simple prototype of the scoring server/client for the ``hacfest`` 
+So far, this is a simple prototype of the scoring server/client for the ``hackfest`` 
 competition.
 
 Dependencies
