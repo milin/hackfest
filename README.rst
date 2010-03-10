@@ -4,6 +4,9 @@ hackfest
 So far, this is a simple prototype of the scoring server/client for the ``hackfest`` 
 competition.
 
+More information can be found at our website, <http://jonwaltman.github.com/hackfest/>.
+
+
 Dependencies
 ------------
 
