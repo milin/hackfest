@@ -1,7 +1,6 @@
-
 /* Colors */
-body { background: #a82052 }
-#container { background: #a82052 }
+body { background: #a82052; }
+#container { background: #a82052; }
 #wrapper { background: white; }
 #header { background: #282833; }
 #header h1, #header h2 { color: #ebd6ce; }
